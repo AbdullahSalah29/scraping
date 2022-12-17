@@ -22,6 +22,7 @@ while True :
         job_skill = []
         data = []
         time = []
+        links=[]
 
 
         job_titles = soup.findAll("h2",{"class":"css-m604qf"})
@@ -40,11 +41,11 @@ while True :
             job_skill.append(job_skills[n].text.replace("Full Time","").replace("Part Time","").replace("Work From Home",""))
             time.append(job_time[n].text.replace("Work From Home"," Work From Home").replace("Full TimePart Time","Full Time Part Time"))
             data.append(posted[n].text)
+            links.append("https://wuzzuf.net"+job_titles[n].find("a").attrs['href'].replace("java devoloper|search-v3|hpb","java%20devoloper|search-v3|hpb"))
 
 
 
-
-        full_list = [job_title,company_name,location_name,time,data,job_skill]
+        full_list = [job_title,company_name,location_name,time,data,job_skill,links]
         for all1 in zip(*full_list):
          print(all1)
         page_num += 1
